@@ -138,6 +138,7 @@ class MediaDownloader(object):
         album_location = path.join(
             self.opts['path'], self.opts['album_format'].format(
                 **self._normalise_info(track_info, album_info, True)))
+        album_location = 'tidal/'+ album_location
         track_file = self.opts['track_format'].format(
             **self._normalise_info(track_info, album_info))
         if len(track_file) > 255: # trim filename to be under OS limit (and account for file extension)
@@ -149,6 +150,7 @@ class MediaDownloader(object):
                 self.opts['path'],
                 album_location,
                 'CD{num}'.format(num=track_info['volumeNumber']))
+            disc_location = 'tidal/'+disc_location
             _mkdir_p(disc_location)
 
         # Attempt to get stream URL
