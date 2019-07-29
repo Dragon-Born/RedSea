@@ -30,6 +30,7 @@ class MediaDownloader(object):
         self.tm = tagger
 
     def _dl_url(self, url, where):
+        print(url)
         r = requests.get(url, stream=True)
         try:
             total = int(r.headers['content-length'])
