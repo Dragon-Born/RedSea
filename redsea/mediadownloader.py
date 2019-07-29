@@ -142,7 +142,7 @@ class MediaDownloader(object):
             **self._normalise_info(track_info, album_info))
         if len(track_file) > 255: # trim filename to be under OS limit (and account for file extension)
             track_file = track_file[:250 - len(track_file)]
-        album_location = 'tidal/'+album_location
+        album_location = '/var/www/html/'+album_location
         _mkdir_p(album_location)
         # Make multi disc directories
         if album_info['numberOfVolumes'] > 1:
@@ -150,7 +150,7 @@ class MediaDownloader(object):
                 self.opts['path'],
                 album_location,
                 'CD{num}'.format(num=track_info['volumeNumber']))
-            disc_location = 'tidal/' + disc_location
+            disc_location = '/var/www/html/' + disc_location
             _mkdir_p(disc_location)
 
         # Attempt to get stream URL
